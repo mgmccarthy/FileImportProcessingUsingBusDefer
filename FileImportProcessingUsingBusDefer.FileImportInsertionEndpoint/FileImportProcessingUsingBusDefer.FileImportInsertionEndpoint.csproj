@@ -56,7 +56,6 @@
     <Compile Include="ConfigureDependencyInjection.cs" />
     <Compile Include="EndpointConfig.cs" />
     <Compile Include="EnsureTablesAreCreatedWhenConfiguringEndpoint.cs" />
-    <Compile Include="Handlers\FileImportInitiatedHandler.cs" />
     <Compile Include="Handlers\ProcessImportFileRowHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

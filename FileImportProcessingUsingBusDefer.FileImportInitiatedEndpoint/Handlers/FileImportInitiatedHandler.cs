@@ -29,14 +29,16 @@ namespace FileImportProcessingUsingBusDefer.FileImportInitiatedEndpoint.Handlers
                 rowsFailed = session.Query<FileImport>().Where(x => x.ImportId == message.ImportId).Count(x => !x.Successfull);
             }
 
-            if (rowsSucceeded + rowsFailed >= message.TotalNumberOfFilesInImport)
+            var logMessage = string.Format("RowsSucceeded: {0}, RowsFailed: {1}, TotalNumberOfFilesInImport: {2}", rowsSucceeded, rowsFailed, message.TotalNumberOfFilesInImport);
+
+            if (rowsSucceeded + rowsFailed == message.TotalNumberOfFilesInImport)
             {
-                Log.Warn("import completed");
+                Log.Warn(logMessage + " import completed");
                 bus.Publish(new FileImportCompleted { ImportId = message.ImportId });
             }
             else
             {
-                Log.Warn("import not completed. Checking again for complete in 5 seconds");
+                Log.Warn(logMessage + " import not completed. Checking again for complete in 5 seconds.\n\r");
                 bus.Defer(new TimeSpan(0, 0, 5), message);
             }
         }

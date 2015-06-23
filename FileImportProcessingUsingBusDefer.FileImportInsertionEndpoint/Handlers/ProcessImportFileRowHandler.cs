@@ -24,7 +24,7 @@ namespace FileImportProcessingUsingBusDefer.FileImportInsertionEndpoint.Handlers
                 bus.Publish(new FileImportInitiated { ImportId = message.ImportId, TotalNumberOfFilesInImport = message.TotalNumberOfFilesInImport });
 
             var success = new Random().Next(100) % 2 == 0;
-            LogManager.GetLogger(typeof(ProcessImportFileRowHandler)).InfoFormat(string.Format("Handling ProcessImportFileRow for Customer: {0}", message.CustomerId));
+            LogManager.GetLogger(typeof(ProcessImportFileRowHandler)).WarnFormat(string.Format("Handling ProcessImportFileRow for Customer: {0}", message.CustomerId));
 
             using (var session = dataStore.OpenSession())
             {
