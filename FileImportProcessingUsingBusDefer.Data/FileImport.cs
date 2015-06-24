@@ -8,6 +8,6 @@ namespace FileImportProcessingUsingBusDefer.Data
         public Guid ImportId { get; set; }
         public int CustomerId { get; set; }
         public string CustomerName { get; set; }
-        public bool Successfull { get; set; }
+        public bool Successful { get; set; }
     }
 }

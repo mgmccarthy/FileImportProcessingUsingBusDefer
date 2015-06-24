@@ -28,7 +28,7 @@ namespace FileImportProcessingUsingBusDefer.FileImportInsertionEndpoint.Handlers
 
             using (var session = dataStore.OpenSession())
             {
-                session.Add(new FileImport { Id = Guid.NewGuid(), ImportId = message.ImportId, CustomerId = message.CustomerId, CustomerName = message.CustomerName, Successfull = success });
+                session.Add(new FileImport { Id = Guid.NewGuid(), ImportId = message.ImportId, CustomerId = message.CustomerId, CustomerName = message.CustomerName, Successful = success });
                 session.SaveChanges();
             }
         }

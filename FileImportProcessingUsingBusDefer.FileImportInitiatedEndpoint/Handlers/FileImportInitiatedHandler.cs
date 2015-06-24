@@ -25,8 +25,8 @@ namespace FileImportProcessingUsingBusDefer.FileImportInitiatedEndpoint.Handlers
             int rowsFailed;
             using (var session = dataStore.OpenSession())
             {
-                rowsSucceeded = session.Query<FileImport>().Where(x => x.ImportId == message.ImportId).Count(x => x.Successfull);
-                rowsFailed = session.Query<FileImport>().Where(x => x.ImportId == message.ImportId).Count(x => !x.Successfull);
+                rowsSucceeded = session.Query<FileImport>().Where(x => x.ImportId == message.ImportId).Count(x => x.Successful);
+                rowsFailed = session.Query<FileImport>().Where(x => x.ImportId == message.ImportId).Count(x => !x.Successful);
             }
 
             var logMessage = string.Format("RowsSucceeded: {0}, RowsFailed: {1}, TotalNumberOfFilesInImport: {2}", rowsSucceeded, rowsFailed, message.TotalNumberOfFilesInImport);
